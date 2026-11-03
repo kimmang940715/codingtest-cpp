@@ -5,19 +5,17 @@ using namespace std;
 #include <array>
 int main()
 {
-	array<int, 10> arr1;
+	array<int, 4> arr3 = { 1,2,3,4 };
 
-	cout << "arr1 배열의 첫 번째 원소 : " << arr1[0] << endl;
-
-	array<int, 4> arr2 = { 1, 2, 3, 4 };
-	cout << "arr2의 모든 원소 : ";
-
-	for (int i = 0; i < arr2.size(); i++)
+	try
 	{
-		cout << arr2[i] << " ";
+		cout << arr3.at(3) << endl; // 에러 아님
+		cout << arr3.at(4) << endl; // out_of_range 예외 발생
 	}
-
-	cout << endl;
+	catch (const out_of_range& ex)
+	{
+		cout << ex.what() << endl;
+	}
 
 	return 0;
 }
